@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "WSAFileLink (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "WSAFileLink (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}
