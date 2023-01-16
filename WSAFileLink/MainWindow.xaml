@@ -17,102 +17,18 @@
         </Grid.RowDefinitions>
 
         <Grid x:Name="AppTitleBar">
-            <Image Source="Images/WindowIcon.png"
-                   HorizontalAlignment="Left" 
-                   Width="16" Height="16" 
-                   Margin="8,0"/>
-            <TextBlock x:Name="AppTitleTextBlock" Text="WSA File Link"
-                       TextWrapping="NoWrap"
-                       Style="{StaticResource CaptionTextBlockStyle}" 
-                       VerticalAlignment="Center"
-                       Margin="28,0,0,0"/>
+            <Image Source="Images/WindowIcon.png" HorizontalAlignment="Left" Width="16" Height="16" Margin="8,0"/>
+            <TextBlock x:Name="AppTitleTextBlock" Text="WSA File Link" TextWrapping="NoWrap" Style="{StaticResource CaptionTextBlockStyle}" VerticalAlignment="Center" Margin="28,0,0,0"/>
         </Grid>
 
-        <NavigationView Grid.Row="1"
-                        IsBackButtonVisible="Collapsed"
-                        IsSettingsVisible="False">
+        <NavigationView SelectionChanged="NavigationView_SelectionChanged" Grid.Row="1" IsBackButtonVisible="Collapsed" IsSettingsVisible="True">
             <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Sort" Content="File Push/Pull" Tag="WSAFileLink"/>
+                <NavigationViewItem Content="2" Tag="SamplePage2"/>
+                <NavigationViewItem Content="3" Tag="SamplePage3"/>
+                <NavigationViewItem Content="4" Tag="SamplePage4"/>
             </NavigationView.MenuItems>
-            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="Push Windows file to Android"
-                                   FontSize="20"
-                                   HorizontalAlignment="Center"/>
-                        <TextBlock Text="adb push &lt;local> &lt;remote>"
-                                   FontSize="12"
-                                   HorizontalAlignment="Center"
-                                   Foreground="DarkGray"/>
-                        <TextBox x:Name="FileFolderPath"  
-                             Header="Push:" 
-                             PlaceholderText="Windows file path" 
-                             MinWidth="200"
-                             MaxWidth="200"/>
-                        <TextBlock Text="eg: C:/WSA Download/example.apk"
-                                   FontSize="12"
-                                   HorizontalAlignment="Center"
-                                   Foreground="DarkGray"/>
-                        <TextBox x:Name="ToAndroidPath"  
-                             Header="To:" 
-                             PlaceholderText="Android folder path" 
-                             MinWidth="200"
-                             MaxWidth="200"/>
-                        <TextBlock Text="eg: /storage/emulated/0/Download/"
-                                   FontSize="12"
-                                   HorizontalAlignment="Center"
-                                   Foreground="DarkGray"/>
-                        <Button x:Name="pushButton" 
-                            Click="pushButton_Click" 
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Bottom"
-                            MinWidth="80"
-                            MaxWidth="80"
-                            Margin="0,10,0,0">Push File</Button>
-                    </StackPanel>
-
-                </StackPanel>
-                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock Text="Push Android file/folder to Windows"
-                                   FontSize="20"
-                                   Margin="0,25,0,0"/>
-                        <TextBlock Text="adb pull &lt;remote> &lt;local>"
-                                   FontSize="12"
-                                   HorizontalAlignment="Center"
-                                   Foreground="DarkGray"/>
-                        <TextBox x:Name="PullFolderPath"  
-                             Header="Pull:" 
-                             PlaceholderText="Android file/folder path"
-                             MinWidth="200"
-                             MaxWidth="200"/>
-                        <TextBlock Text="eg: /storage/emulated/0/Download/example.apk"
-                                   FontSize="12"
-                                   HorizontalAlignment="Center"
-                                   Foreground="DarkGray"/>
-                        <TextBlock Text="or: /storage/emulated/0/Download/"
-                                   FontSize="12"
-                                   HorizontalAlignment="Center"
-                                   Foreground="DarkGray"/>
-                        <TextBox x:Name="ToWindowsPath"
-                             Header="To:" 
-                             PlaceholderText="Windows folder path"
-                             MinWidth="200"
-                             MaxWidth="200"/>
-                        <TextBlock Text="eg: C:/WSA Download"
-                                   FontSize="12"
-                                   HorizontalAlignment="Center"
-                                   Foreground="DarkGray"/>
-                        <Button x:Name="pullButton" 
-                            Click="pullButton_Click"
-                            HorizontalAlignment="Center" 
-                            VerticalAlignment="Bottom"
-                            MinWidth="80"
-                            MaxWidth="80" 
-                            Margin="0,10,0,0">Pull File</Button>
-                    </StackPanel>
-
-                </StackPanel>
-            </StackPanel>
+            <Frame x:Name="contentFrame"/>
         </NavigationView>
     </Grid>
 </Window>
