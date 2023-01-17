@@ -3,6 +3,7 @@
 
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using System;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -41,7 +42,6 @@ namespace WSAFileLink
             //else if ((string)selectedItem.Tag == "SamplePage2") contentFrame.Navigate(typeof(SamplePage2));
             //else if ((string)selectedItem.Tag == "SamplePage3") contentFrame.Navigate(typeof(SamplePage3));
             //else if ((string)selectedItem.Tag == "SamplePage4") contentFrame.Navigate(typeof(SamplePage4));
-
         }
     }
 }

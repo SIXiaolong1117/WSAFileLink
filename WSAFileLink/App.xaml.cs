@@ -42,6 +42,6 @@ namespace WSAFileLink
             appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 480, Height = 800 });
         }
 
-        private Window m_window;
+        public static Window m_window;
     }
 }

@@ -23,10 +23,7 @@
 
         <NavigationView SelectionChanged="NavigationView_SelectionChanged" Grid.Row="1" IsBackButtonVisible="Collapsed" IsSettingsVisible="True">
             <NavigationView.MenuItems>
-                <NavigationViewItem Icon="Sort" Content="File Push/Pull" Tag="WSAFileLink"/>
-                <NavigationViewItem Content="2" Tag="SamplePage2"/>
-                <NavigationViewItem Content="3" Tag="SamplePage3"/>
-                <NavigationViewItem Content="4" Tag="SamplePage4"/>
+                <NavigationViewItem Icon="Sort" Content="WSA File Push/Pull" Tag="WSAFileLink"/>
             </NavigationView.MenuItems>
             <Frame x:Name="contentFrame"/>
         </NavigationView>

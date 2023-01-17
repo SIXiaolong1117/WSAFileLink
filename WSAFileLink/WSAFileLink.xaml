@@ -16,31 +16,26 @@
             <TextBlock Text="File Push/Pull" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,16"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Push Windows file to WSA" FontSize="16" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Push Windows file to Android" FontSize="16" HorizontalAlignment="Center"/>
                     <TextBlock Text="adb push &lt;local> &lt;remote>" FontSize="12" HorizontalAlignment="Center" Foreground="DarkGray"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBox x:Name="FileFolderPath" Header="Push:" PlaceholderText="Windows file path" MinWidth="200" MaxWidth="200"/>
                         <Button x:Name="toAndroidPickerButton" Click="toAndroidPickerButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="60" MaxWidth="60" Margin="8,0,0,0">Select</Button>
                     </StackPanel>
-                    <TextBlock Text="eg: C:/WSA Download/example.apk" FontSize="12" HorizontalAlignment="Center" Foreground="DarkGray"/>
                     <TextBox x:Name="ToAndroidPath" Header="To:" PlaceholderText="Android folder path" MinWidth="268" MaxWidth="268"/>
-                    <TextBlock Text="eg: /storage/emulated/0/Download/" FontSize="12" HorizontalAlignment="Center" Foreground="DarkGray"/>
                     <Button x:Name="pushButton" Click="pushButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="80" MaxWidth="80" Margin="0,8,0,0">Push File</Button>
                 </StackPanel>
 
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Push WSA file/folder to Windows" FontSize="16" Margin="0,16,0,0"/>
+                    <TextBlock Text="Pull Android file/folder to Windows" FontSize="16" HorizontalAlignment="Center" Margin="0,16,0,0"/>
                     <TextBlock Text="adb pull &lt;remote> &lt;local>" FontSize="12" HorizontalAlignment="Center" Foreground="DarkGray"/>
                     <TextBox x:Name="PullFolderPath" Header="Pull:"  PlaceholderText="Android file/folder path" MinWidth="268" MaxWidth="268"/>
-                    <TextBlock Text="eg: /storage/emulated/0/Download/example.apk" FontSize="12" HorizontalAlignment="Center" Foreground="DarkGray"/>
-                    <TextBlock Text="or: /storage/emulated/0/Download/" FontSize="12" HorizontalAlignment="Center" Foreground="DarkGray"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBox x:Name="ToWindowsPath" Header="To:" PlaceholderText="Windows folder path" MinWidth="200" MaxWidth="200"/>
                         <Button x:Name="toWindowsPickerButton" Click="toWindowsPickerButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="60" MaxWidth="60" Margin="8,0,0,0">Select</Button>
                     </StackPanel>
-                    <TextBlock Text="eg: C:/WSA Download" FontSize="12" HorizontalAlignment="Center" Foreground="DarkGray"/>
                     <Button x:Name="pullButton" Click="pullButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="80" MaxWidth="80" Margin="0,8,0,0">Pull File</Button>
                 </StackPanel>
 
