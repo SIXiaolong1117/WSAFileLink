@@ -20,44 +20,56 @@ using Windows.Storage.Pickers;
 using Windows.Storage;
 using WinRT.Interop;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace WSAFileLink
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class WSAFileLink : Page
     {
+        ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
         public WSAFileLink()
         {
             this.InitializeComponent();
-            ToAndroidPath.Text = "/storage/emulated/0/Download/";
-            PullFolderPath.Text = "/storage/emulated/0/Download/";
+
+            FileFolderPath.Text = localSettings.Values["FileFolderPath"] as string;
+            ToAndroidPath.Text = localSettings.Values["ToAndroidPath"] as string;
+            if (ToAndroidPath.Text == "") { ToAndroidPath.Text = "/storage/emulated/0/Download/"; }
+            PullFolderPath.Text = localSettings.Values["PullFolderPath"] as string;
+            if (PullFolderPath.Text == "") { PullFolderPath.Text = "/storage/emulated/0/Download/"; }
+            ToWindowsPath.Text = localSettings.Values["ToWindowsPath"] as string;
         }
 
+        public void FileFolderPath_TextChanged(object sender, TextChangedEventArgs e) { localSettings.Values["FileFolderPath"] = FileFolderPath.Text; }
+        public void ToAndroidPath_TextChanged(object sender, TextChangedEventArgs e) { localSettings.Values["ToAndroidPath"] = ToAndroidPath.Text; }
+        public void PullFolderPath_TextChanged(object sender, TextChangedEventArgs e) { localSettings.Values["PullFolderPath"] = PullFolderPath.Text; }
+        public void ToWindowsPath_TextChanged(object sender, TextChangedEventArgs e) { localSettings.Values["ToWindowsPath"] = ToWindowsPath.Text; }
         private void pushButton_Click(object sender, RoutedEventArgs e)
         {
+            String adbPath = localSettings.Values["adb"] as string;
             Process process = new Process();
             process.StartInfo.FileName = "PowerShell.exe";
-            process.StartInfo.Arguments = "adb connect 127.0.0.1:58526; adb push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "'";
-            process.StartInfo.UseShellExecute = false; //是否使用操作系统shell启动
-            process.StartInfo.CreateNoWindow = true; //是否在新窗口中启动该进程的值 (不显示程序窗口)
+            process.StartInfo.Arguments = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "'";
+            //是否使用操作系统shell启动
+            process.StartInfo.UseShellExecute = false;
+            //是否在新窗口中启动该进程的值 (不显示程序窗口)
+            process.StartInfo.CreateNoWindow = true;
             process.Start();
-            process.WaitForExit(); //等待程序执行完退出进程
+            //等待程序执行完退出进程
+            process.WaitForExit();
             process.Close();
         }
 
         private void pullButton_Click(object sender, RoutedEventArgs e)
         {
+            String adbPath = localSettings.Values["adb"] as string;
             Process process = new Process();
             process.StartInfo.FileName = "PowerShell.exe";
-            process.StartInfo.Arguments = "adb connect 127.0.0.1:58526; adb pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "'; ";
-            process.StartInfo.UseShellExecute = false; //是否使用操作系统shell启动
-            process.StartInfo.CreateNoWindow = false; //是否在新窗口中启动该进程的值 (不显示程序窗口)
+            process.StartInfo.Arguments = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "'; ";
+            //是否使用操作系统shell启动
+            process.StartInfo.UseShellExecute = false;
+            //是否在新窗口中启动该进程的值 (不显示程序窗口)
+            process.StartInfo.CreateNoWindow = false;
             process.Start();
-            process.WaitForExit(); //等待程序执行完退出进程
+            //等待程序执行完退出进程
+            process.WaitForExit();
             process.Close();
         }
 

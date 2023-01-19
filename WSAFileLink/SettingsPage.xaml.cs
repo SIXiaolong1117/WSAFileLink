@@ -16,6 +16,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -27,13 +28,26 @@ namespace WSAFileLink
     /// </summary>
     public sealed partial class SettingsPage : Page
     {
+        ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
         public SettingsPage()
         {
             this.InitializeComponent();
-        }
-        private void adbPickerButton_Click(object sender, RoutedEventArgs e)
-        {
 
+            adbPath.Text = localSettings.Values["adb"] as string;
+            if (adbPath.Text == "")
+            {
+                adbPath.Text = "adb";
+            }
+        }
+
+        private void saveSettingButton_Click(object sender, RoutedEventArgs e)
+        {
+            //    localSettings.Values["adb"] = adbPath.Text;
+        }
+
+        public void adbPath_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            localSettings.Values["adb"] = adbPath.Text;
         }
     }
 }

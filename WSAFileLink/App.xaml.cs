@@ -19,6 +19,7 @@ using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Core;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Storage;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 
@@ -26,10 +27,17 @@ namespace WSAFileLink
 {
     public partial class App : Application
     {
+        ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+
         public App()
         {
             this.InitializeComponent();
+
+            localSettings.Values["FileFolderPath"] = "";
+            localSettings.Values["ToWindowsPath"] = "";
+
         }
+
         protected override void OnLaunched(Microsoft.UI.Xaml.LaunchActivatedEventArgs args)
         {
             m_window = new MainWindow();

@@ -12,17 +12,9 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Setting" FontSize="20" HorizontalAlignment="Left" Margin="0,0,0,16"/>
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="ADB Path" FontSize="16" HorizontalAlignment="Left"/>
-                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,8,0,0">
-                        <TextBox x:Name="adbPath" PlaceholderText="adb" MinWidth="200" MaxWidth="200"/>
-                        <Button x:Name="adbPickerButton" Click="adbPickerButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="60" MaxWidth="60" Margin="8,0,0,0">Select</Button>
-                    </StackPanel>
-                </StackPanel>
-            </StackPanel>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox x:Name="adbPath" TextChanged="adbPath_TextChanged" Header="Adb path:" PlaceholderText="Adb path" MinWidth="200" MaxWidth="200"/>
+            <Button x:Name="saveSetting" Click="saveSettingButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="60" MaxWidth="60" Margin="8,0,0,0">Save</Button>
         </StackPanel>
     </Grid>
 </Page>
