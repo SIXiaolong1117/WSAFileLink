@@ -4,12 +4,13 @@
 
 ## 项目预览
 
-<img src="./README/%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE%202023-01-17%20141010.png" style="zoom: 80%;" />
+<img src="./README/屏幕截图 2023-01-23 172340.png" style="zoom: 80%;" />
 
 ## ⬇下载
 
-您可以直接到 [Releases · Direct5dom/WSAFileLink](https://github.com/Direct5dom/WSAFileLink/releases)
- 下载我已经打包好的安装包。
+您可以直接到 [Releases · Direct5dom/WSAFileLink](https://github.com/Direct5dom/WSAFileLink/releases)下载我已经打包好的安装包。
+
+安装需要注意的是，要右键“使用PowrShell”运行`Install.ps1`，而不是直接双击`WSAFileLink.msix`。
 
 ## 🛠️获取源码
 

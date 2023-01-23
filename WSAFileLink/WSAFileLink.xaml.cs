@@ -35,12 +35,36 @@ namespace WSAFileLink
             PullFolderPath.Text = localSettings.Values["PullFolderPath"] as string;
             if (PullFolderPath.Text == "") { PullFolderPath.Text = "/storage/emulated/0/Download/"; }
             ToWindowsPath.Text = localSettings.Values["ToWindowsPath"] as string;
+
+            String adbPath = localSettings.Values["adb"] as string;
+            adbPushCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "'";
+            adbPullCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "'; ";
         }
 
-        public void FileFolderPath_TextChanged(object sender, TextChangedEventArgs e) { localSettings.Values["FileFolderPath"] = FileFolderPath.Text; }
-        public void ToAndroidPath_TextChanged(object sender, TextChangedEventArgs e) { localSettings.Values["ToAndroidPath"] = ToAndroidPath.Text; }
-        public void PullFolderPath_TextChanged(object sender, TextChangedEventArgs e) { localSettings.Values["PullFolderPath"] = PullFolderPath.Text; }
-        public void ToWindowsPath_TextChanged(object sender, TextChangedEventArgs e) { localSettings.Values["ToWindowsPath"] = ToWindowsPath.Text; }
+        public void FileFolderPath_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            localSettings.Values["FileFolderPath"] = FileFolderPath.Text;
+            String adbPath = localSettings.Values["adb"] as string;
+            adbPushCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "'";
+        }
+        public void ToAndroidPath_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            localSettings.Values["ToAndroidPath"] = ToAndroidPath.Text;
+            String adbPath = localSettings.Values["adb"] as string;
+            adbPushCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "'";
+        }
+        public void PullFolderPath_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            localSettings.Values["PullFolderPath"] = PullFolderPath.Text;
+            String adbPath = localSettings.Values["adb"] as string;
+            adbPullCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "'; ";
+        }
+        public void ToWindowsPath_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            localSettings.Values["ToWindowsPath"] = ToWindowsPath.Text;
+            String adbPath = localSettings.Values["adb"] as string;
+            adbPullCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "'; ";
+        }
         private void pushButton_Click(object sender, RoutedEventArgs e)
         {
             String adbPath = localSettings.Values["adb"] as string;

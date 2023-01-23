@@ -5,6 +5,12 @@
     },
     "WSAFileLink (Unpackaged)": {
       "commandName": "Project"
+    },
+    "WSAFileLink (Remote Package)": {
+      "commandName": "MsixPackage",
+      "remoteDebugEnabled": true,
+      "remoteDebugMachine": "10.168.1.102",
+      "authenticationMode": "Windows"
     }
   }
 }

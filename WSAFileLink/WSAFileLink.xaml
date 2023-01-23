@@ -13,7 +13,9 @@
 
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+
             <TextBlock Text="File Push/Pull" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,16"/>
+
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock Text="Push Windows file to WSA" FontSize="16" HorizontalAlignment="Center"/>
@@ -23,10 +25,11 @@
                         <Button x:Name="toAndroidPickerButton" Click="toAndroidPickerButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="60" MaxWidth="60" Margin="8,0,0,0">Select</Button>
                     </StackPanel>
                     <TextBox x:Name="ToAndroidPath" TextChanged="ToAndroidPath_TextChanged" Header="To:" PlaceholderText="Android folder path" MinWidth="268" MaxWidth="268"/>
+                    <TextBox x:Name="adbPushCMD" Header="Push CMD:" MinWidth="268" MaxWidth="268"/>
                     <Button x:Name="pushButton" Click="pushButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="80" MaxWidth="80" Margin="0,8,0,0">Push File</Button>
                 </StackPanel>
-
             </StackPanel>
+
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock Text="Pull WSA file/folder to Windows" FontSize="16" HorizontalAlignment="Center" Margin="0,16,0,0"/>
@@ -36,10 +39,11 @@
                         <TextBox x:Name="ToWindowsPath" TextChanged="ToWindowsPath_TextChanged" Header="To:" PlaceholderText="Windows folder path" MinWidth="200" MaxWidth="200"/>
                         <Button x:Name="toWindowsPickerButton" Click="toWindowsPickerButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="60" MaxWidth="60" Margin="8,0,0,0">Select</Button>
                     </StackPanel>
+                    <TextBox x:Name="adbPullCMD" Header="Pull CMD:" MinWidth="268" MaxWidth="268"/>
                     <Button x:Name="pullButton" Click="pullButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="80" MaxWidth="80" Margin="0,8,0,0">Pull File</Button>
                 </StackPanel>
-
             </StackPanel>
+
         </StackPanel>
     </Grid>
 </Page>

@@ -12,9 +12,12 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBox x:Name="adbPath" TextChanged="adbPath_TextChanged" Header="Adb path:" PlaceholderText="Adb path" MinWidth="200" MaxWidth="200"/>
-            <Button x:Name="saveSetting" Click="saveSettingButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="60" MaxWidth="60" Margin="8,0,0,0">Save</Button>
+        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBox x:Name="adbPath" TextChanged="adbPath_TextChanged" Header="Adb path:" PlaceholderText="Adb path" MinWidth="268" MaxWidth="200"/>
+            <ComboBox SelectionChanged="backgroundMaterial_SelectionChanged" Header="Background Material:" PlaceholderText="Mica" Width="268" Margin="0,8,0,0">
+                <x:String>Mica</x:String>
+                <x:String>Acrylic</x:String>
+            </ComboBox>
         </StackPanel>
     </Grid>
 </Page>
