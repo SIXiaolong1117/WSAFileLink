@@ -13,7 +13,9 @@
 
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+            
             <TextBlock Text="File Push/Pull" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,16"/>
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock Text="Push Windows file to WSA" FontSize="16" HorizontalAlignment="Center"/>
@@ -25,8 +27,8 @@
                     <TextBox x:Name="ToAndroidPath" TextChanged="ToAndroidPath_TextChanged" Header="To:" PlaceholderText="Android folder path" MinWidth="268" MaxWidth="268"/>
                     <Button x:Name="pushButton" Click="pushButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="80" MaxWidth="80" Margin="0,8,0,0">Push File</Button>
                 </StackPanel>
-
             </StackPanel>
+            
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
                     <TextBlock Text="Pull WSA file/folder to Windows" FontSize="16" HorizontalAlignment="Center" Margin="0,16,0,0"/>
@@ -38,8 +40,8 @@
                     </StackPanel>
                     <Button x:Name="pullButton" Click="pullButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="80" MaxWidth="80" Margin="0,8,0,0">Pull File</Button>
                 </StackPanel>
-
             </StackPanel>
+            
         </StackPanel>
     </Grid>
 </Page>

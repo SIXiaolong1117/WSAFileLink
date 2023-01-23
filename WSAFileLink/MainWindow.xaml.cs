@@ -5,15 +5,16 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using Microsoft.UI.Composition.SystemBackdrops;
-using System.Runtime.InteropServices; // For DllImport
-using WinRT; // required to support Window.As<ICompositionSupportsSystemBackdrop>()
+using System.Runtime.InteropServices; 
+using WinRT; 
 
 namespace WSAFileLink
 {
     public sealed partial class MainWindow : Window
     {
         WindowsSystemDispatcherQueueHelper m_wsdqHelper; // See below for implementation.
-        DesktopAcrylicController m_backdropController;
+        //DesktopAcrylicController m_backdropController;
+        MicaController m_backdropController;
         SystemBackdropConfiguration m_configurationSource;
         public MainWindow()
         {
@@ -45,11 +46,12 @@ namespace WSAFileLink
                 m_configurationSource.IsInputActive = true;
                 SetConfigurationSourceTheme();
 
-                m_backdropController = new Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController();
+                //m_backdropController = new Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController();
+                m_backdropController = new Microsoft.UI.Composition.SystemBackdrops.MicaController();
 
-            // Enable the system backdrop.
-            // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
-            m_backdropController.AddSystemBackdropTarget(this.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
+                // Enable the system backdrop.
+                // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
+                m_backdropController.AddSystemBackdropTarget(this.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
                 m_backdropController.SetSystemBackdropConfiguration(m_configurationSource);
                 return true; // succeeded
             }
@@ -108,6 +110,7 @@ namespace WSAFileLink
             }
         }
     }
+
     class WindowsSystemDispatcherQueueHelper
     {
         [StructLayout(LayoutKind.Sequential)]

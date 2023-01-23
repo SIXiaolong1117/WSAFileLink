@@ -11,6 +11,7 @@
     mc:Ignorable="d">
 
     <Grid>
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>
             <RowDefinition/>
@@ -27,5 +28,6 @@
             </NavigationView.MenuItems>
             <Frame x:Name="contentFrame"/>
         </NavigationView>
+        
     </Grid>
 </Window>

@@ -40,14 +40,25 @@ namespace WSAFileLink
             }
         }
 
-        private void saveSettingButton_Click(object sender, RoutedEventArgs e)
-        {
-            //    localSettings.Values["adb"] = adbPath.Text;
-        }
-
-        public void adbPath_TextChanged(object sender, TextChangedEventArgs e)
+        public void adbPath_TextChanged(object sender, RoutedEventArgs e)
         {
             localSettings.Values["adb"] = adbPath.Text;
+        }
+
+        private void backgroundMaterial_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string materialStatus = e.AddedItems[0].ToString();
+            switch (materialStatus)
+            {
+                case "Mica":
+                    localSettings.Values["materialStatus"] = "Mica";
+                    break;
+                case "Acrylic":
+                    localSettings.Values["materialStatus"] = "Acrylic";
+                    break;
+                default:
+                    throw new Exception($"Invalid argument: {materialStatus}");
+            }
         }
     }
 }
