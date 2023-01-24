@@ -19,12 +19,14 @@ using System.Diagnostics;
 using Windows.Storage.Pickers;
 using Windows.Storage;
 using WinRT.Interop;
+using Windows.ApplicationModel.DataTransfer;
 
 namespace WSAFileLink
 {
     public sealed partial class WSAFileLink : Page
     {
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+        DataPackage dataPackage = new DataPackage();
         public WSAFileLink()
         {
             this.InitializeComponent();
@@ -37,33 +39,47 @@ namespace WSAFileLink
             ToWindowsPath.Text = localSettings.Values["ToWindowsPath"] as string;
 
             String adbPath = localSettings.Values["adb"] as string;
-            adbPushCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "'";
-            adbPullCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "'; ";
+            adbPushCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "';";
+            adbPullCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "';";
         }
 
         public void FileFolderPath_TextChanged(object sender, TextChangedEventArgs e)
         {
             localSettings.Values["FileFolderPath"] = FileFolderPath.Text;
             String adbPath = localSettings.Values["adb"] as string;
-            adbPushCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "'";
+            adbPushCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "';";
         }
         public void ToAndroidPath_TextChanged(object sender, TextChangedEventArgs e)
         {
             localSettings.Values["ToAndroidPath"] = ToAndroidPath.Text;
             String adbPath = localSettings.Values["adb"] as string;
-            adbPushCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "'";
+            adbPushCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "';";
         }
         public void PullFolderPath_TextChanged(object sender, TextChangedEventArgs e)
         {
             localSettings.Values["PullFolderPath"] = PullFolderPath.Text;
             String adbPath = localSettings.Values["adb"] as string;
-            adbPullCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "'; ";
+            adbPullCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "';";
         }
         public void ToWindowsPath_TextChanged(object sender, TextChangedEventArgs e)
         {
             localSettings.Values["ToWindowsPath"] = ToWindowsPath.Text;
             String adbPath = localSettings.Values["adb"] as string;
-            adbPullCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "'; ";
+            adbPullCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "';";
+        }
+        private void toAndroidCopyButton_Click(object sender, RoutedEventArgs e)
+        {
+            String adbPath = localSettings.Values["adb"] as string;
+            dataPackage.SetText(adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "';");
+            dataPackage.RequestedOperation = DataPackageOperation.Copy;
+            Clipboard.SetContent(dataPackage);
+        }
+        private void toWindowsCopyButton_Click(object sender, RoutedEventArgs e)
+        {
+            String adbPath = localSettings.Values["adb"] as string;
+            dataPackage.SetText(adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "';");
+            dataPackage.RequestedOperation = DataPackageOperation.Copy;
+            Clipboard.SetContent(dataPackage);
         }
         private void pushButton_Click(object sender, RoutedEventArgs e)
         {
@@ -80,7 +96,6 @@ namespace WSAFileLink
             process.WaitForExit();
             process.Close();
         }
-
         private void pullButton_Click(object sender, RoutedEventArgs e)
         {
             String adbPath = localSettings.Values["adb"] as string;
