@@ -9,6 +9,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -29,14 +30,33 @@ namespace WSAFileLink
     public sealed partial class SettingsPage : Page
     {
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+
+        public List<string> material { get; } = new List<string>()
+            {
+            "Mica",
+            "Acrylic"
+            };
+
         public SettingsPage()
         {
             this.InitializeComponent();
 
-            backgroundMaterial.PlaceholderText = localSettings.Values["materialStatus"] as string;
-            adbPath.Text = localSettings.Values["adb"] as string;
-        }
+            //backgroundMaterial.PlaceholderText = localSettings.Values["materialStatus"] as string;
+            if (localSettings.Values["materialStatus"] as string == "Mica")
+            {
+                backgroundMaterial.SelectedItem = material[0];
+            }
+            else if (localSettings.Values["materialStatus"] as string == "Acrylic")
+            {
+                backgroundMaterial.SelectedItem = material[1];
+            }
+            else
+            {
+                throw new Exception($"Wrong material type: {localSettings.Values["materialStatus"]}");
+            }
 
+                adbPath.Text = localSettings.Values["adb"] as string;
+        }
         public void adbPath_TextChanged(object sender, RoutedEventArgs e)
         {
             localSettings.Values["adb"] = adbPath.Text;
@@ -48,12 +68,26 @@ namespace WSAFileLink
             switch (materialStatus)
             {
                 case "Mica":
-                    localSettings.Values["materialStatus"] = "Mica";
-                    Microsoft.Windows.AppLifecycle.AppInstance.Restart("");
+                    if (localSettings.Values["materialStatus"] as string != "Mica")
+                    {
+                        localSettings.Values["materialStatus"] = "Mica";
+                        Microsoft.Windows.AppLifecycle.AppInstance.Restart("");
+                    }
+                    else
+                    {
+                        localSettings.Values["materialStatus"] = "Mica";
+                    }
                     break;
                 case "Acrylic":
-                    localSettings.Values["materialStatus"] = "Acrylic";
-                    Microsoft.Windows.AppLifecycle.AppInstance.Restart("");
+                    if (localSettings.Values["materialStatus"] as string != "Acrylic")
+                    {
+                        localSettings.Values["materialStatus"] = "Acrylic";
+                        Microsoft.Windows.AppLifecycle.AppInstance.Restart("");
+                    }
+                    else
+                    {
+                        localSettings.Values["materialStatus"] = "Acrylic";
+                    }
                     break;
                 default:
                     throw new Exception($"Invalid argument: {materialStatus}");

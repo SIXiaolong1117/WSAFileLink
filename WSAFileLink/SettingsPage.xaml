@@ -14,9 +14,9 @@
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <TextBox x:Name="adbPath" TextChanged="adbPath_TextChanged" Header="Adb path:" PlaceholderText="Adb path" MinWidth="268" MaxWidth="200"/>
-            <ComboBox x:Name="backgroundMaterial" SelectionChanged="backgroundMaterial_SelectionChanged" Header="Background Material:" PlaceholderText="" Width="268" Margin="0,8,0,0">
-                <x:String>Mica</x:String>
-                <x:String>Acrylic</x:String>
+            <ComboBox x:Name="backgroundMaterial" ItemsSource="{x:Bind material}" SelectionChanged="backgroundMaterial_SelectionChanged" Header="Background Material:" Width="268" Margin="0,8,0,0">
+                <!-- <x:String>Mica</x:String>
+                <x:String>Acrylic</x:String>-->
             </ComboBox>
         </StackPanel>
     </Grid>

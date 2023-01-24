@@ -39,8 +39,8 @@ namespace WSAFileLink
             {
                 localSettings.Values["adb"] = "adb";
             }
+
             //throw new Exception($"{NavView.MenuItems.Count}");
-            
             NavView.SelectedItem = NavView.MenuItems[0];
             //contentFrame.Navigate(typeof(DragandDrop));
         }
