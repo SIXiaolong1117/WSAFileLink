@@ -48,9 +48,7 @@ namespace WSAFileLink
             var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
             var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
 
-
-
-            appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 480, Height = 800 });
+            appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 480, Height = 870 });
         }
 
         public static Window m_window;

@@ -34,6 +34,7 @@ namespace WSAFileLink
             this.InitializeComponent();
 
             backgroundMaterial.PlaceholderText = localSettings.Values["materialStatus"] as string;
+            adbPath.Text = localSettings.Values["adb"] as string;
         }
 
         public void adbPath_TextChanged(object sender, RoutedEventArgs e)
