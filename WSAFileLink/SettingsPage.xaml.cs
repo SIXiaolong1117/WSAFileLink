@@ -32,6 +32,8 @@ namespace WSAFileLink
         public SettingsPage()
         {
             this.InitializeComponent();
+
+            backgroundMaterial.PlaceholderText = localSettings.Values["materialStatus"] as string;
         }
 
         public void adbPath_TextChanged(object sender, RoutedEventArgs e)
@@ -46,9 +48,11 @@ namespace WSAFileLink
             {
                 case "Mica":
                     localSettings.Values["materialStatus"] = "Mica";
+                    Microsoft.Windows.AppLifecycle.AppInstance.Restart("");
                     break;
                 case "Acrylic":
                     localSettings.Values["materialStatus"] = "Acrylic";
+                    Microsoft.Windows.AppLifecycle.AppInstance.Restart("");
                     break;
                 default:
                     throw new Exception($"Invalid argument: {materialStatus}");

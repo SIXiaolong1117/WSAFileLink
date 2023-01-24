@@ -5,7 +5,7 @@ using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using System;
 using Microsoft.UI.Composition.SystemBackdrops;
-using System.Runtime.InteropServices; 
+using System.Runtime.InteropServices;
 using WinRT;
 using Windows.Storage;
 
@@ -14,12 +14,13 @@ namespace WSAFileLink
     public sealed partial class MainWindow : Window
     {
         WindowsSystemDispatcherQueueHelper m_wsdqHelper; // See below for implementation.
-        //DesktopAcrylicController m_backdropController;
+        DesktopAcrylicController a_backdropController;
         MicaController m_backdropController;
         SystemBackdropConfiguration m_configurationSource;
 
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
+        //String materialStatus = localSettings.Values["materialStatus"] as string;
         public MainWindow()
         {
             this.InitializeComponent();
@@ -55,13 +56,27 @@ namespace WSAFileLink
                 m_configurationSource.IsInputActive = true;
                 SetConfigurationSourceTheme();
 
-                //m_backdropController = new Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController();
-                m_backdropController = new Microsoft.UI.Composition.SystemBackdrops.MicaController();
+                if (localSettings.Values["materialStatus"] as string == "Acrylic")
+                {
+                    a_backdropController = new Microsoft.UI.Composition.SystemBackdrops.DesktopAcrylicController();
+                }
+                else
+                {
+                    m_backdropController = new Microsoft.UI.Composition.SystemBackdrops.MicaController();
+                }
 
                 // Enable the system backdrop.
                 // Note: Be sure to have "using WinRT;" to support the Window.As<...>() call.
-                m_backdropController.AddSystemBackdropTarget(this.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
-                m_backdropController.SetSystemBackdropConfiguration(m_configurationSource);
+                if (localSettings.Values["materialStatus"] as string == "Acrylic")
+                {
+                    a_backdropController.AddSystemBackdropTarget(this.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
+                    a_backdropController.SetSystemBackdropConfiguration(m_configurationSource);
+                }
+                else
+                {
+                    m_backdropController.AddSystemBackdropTarget(this.As<Microsoft.UI.Composition.ICompositionSupportsSystemBackdrop>());
+                    m_backdropController.SetSystemBackdropConfiguration(m_configurationSource);
+                }
                 return true; // succeeded
             }
 
@@ -76,10 +91,21 @@ namespace WSAFileLink
         {
             // Make sure any Mica/Acrylic controller is disposed
             // so it doesn't try to use this closed window.
-            if (m_backdropController != null)
+            if (localSettings.Values["materialStatus"] as string == "Acrylic")
             {
-                m_backdropController.Dispose();
-                m_backdropController = null;
+                if (a_backdropController != null)
+                {
+                    a_backdropController.Dispose();
+                    a_backdropController = null;
+                }
+            }
+            else
+            {
+                if (m_backdropController != null)
+                {
+                    m_backdropController.Dispose();
+                    m_backdropController = null;
+                }
             }
             this.Activated -= Window_Activated;
             m_configurationSource = null;
