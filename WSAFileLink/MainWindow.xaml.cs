@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation and Contributors.
+﻿// Copyright (c) Microsoft Corporation and Contributors.
 // Licensed under the MIT License.
 
 using Microsoft.UI.Xaml;
@@ -8,6 +8,10 @@ using Microsoft.UI.Composition.SystemBackdrops;
 using System.Runtime.InteropServices;
 using WinRT;
 using Windows.Storage;
+using Microsoft.UI.Xaml.Media.Animation;
+using System.Security.AccessControl;
+using Microsoft.UI.Xaml.Controls.Primitives;
+using System.Linq;
 
 namespace WSAFileLink
 {
@@ -35,8 +39,10 @@ namespace WSAFileLink
             {
                 localSettings.Values["adb"] = "adb";
             }
-
-            contentFrame.Navigate(typeof(DragandDrop));
+            //throw new Exception($"{NavView.MenuItems.Count}");
+            
+            NavView.SelectedItem = NavView.MenuItems[0];
+            //contentFrame.Navigate(typeof(DragandDrop));
         }
 
         bool TrySetSystemBackdrop()
@@ -138,13 +144,13 @@ namespace WSAFileLink
             else
             {
                 var selectedItem = (NavigationViewItem)args.SelectedItem;
-                if ((string)selectedItem.Tag == "WSAFileLink")
-                {
-                    contentFrame.Navigate(typeof(WSAFileLink));
-                }
-                else if ((string)selectedItem.Tag == "DragandDrop")
+                if ((string)selectedItem.Tag == "DragandDrop")
                 {
                     contentFrame.Navigate(typeof(DragandDrop));
+                }
+                else if ((string)selectedItem.Tag == "WSAFileLink")
+                {
+                    contentFrame.Navigate(typeof(WSAFileLink));
                 }
                 else if ((string)selectedItem.Tag == "About")
                 {
