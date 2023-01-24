@@ -36,7 +36,7 @@ namespace WSAFileLink
                 localSettings.Values["adb"] = "adb";
             }
 
-            contentFrame.Navigate(typeof(WSAFileLink));
+            contentFrame.Navigate(typeof(DragandDrop));
         }
 
         bool TrySetSystemBackdrop()
@@ -141,6 +141,14 @@ namespace WSAFileLink
                 if ((string)selectedItem.Tag == "WSAFileLink")
                 {
                     contentFrame.Navigate(typeof(WSAFileLink));
+                }
+                else if ((string)selectedItem.Tag == "DragandDrop")
+                {
+                    contentFrame.Navigate(typeof(DragandDrop));
+                }
+                else if ((string)selectedItem.Tag == "About")
+                {
+                    contentFrame.Navigate(typeof(About));
                 }
             }
         }

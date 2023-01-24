@@ -24,8 +24,12 @@
 
         <NavigationView SelectionChanged="NavigationView_SelectionChanged" Grid.Row="1" IsBackButtonVisible="Collapsed" IsSettingsVisible="True">
             <NavigationView.MenuItems>
+                <NavigationViewItem Icon="Sort" Content="Drag and Drop" Tag="DragandDrop"/>
                 <NavigationViewItem Icon="Sort" Content="WSA File Push/Pull" Tag="WSAFileLink"/>
             </NavigationView.MenuItems>
+            <NavigationView.FooterMenuItems>
+                <NavigationViewItem Icon="Message" Content="About" Tag="About"/>
+            </NavigationView.FooterMenuItems>
             <Frame x:Name="contentFrame"/>
         </NavigationView>
         
