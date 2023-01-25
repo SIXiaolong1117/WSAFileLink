@@ -19,29 +19,28 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Storage;
 
-// To learn more about WinUI, the WinUI project structure,
-// and more about our project templates, see: http://aka.ms/winui-project-info.
-
 namespace WSAFileLink
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class SettingsPage : Page
     {
+        // 启用本地设置数据
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-
+        
+        // 材料ComboBox列表List
         public List<string> material { get; } = new List<string>()
-            {
+        {
             "Mica",
             "Acrylic"
-            };
+        };
 
+        // 页面初始化
         public SettingsPage()
         {
+            // 初始化
             this.InitializeComponent();
 
             //backgroundMaterial.PlaceholderText = localSettings.Values["materialStatus"] as string;
+            // 读取本地设置数据，调整ComboBox状态
             if (localSettings.Values["materialStatus"] as string == "Mica")
             {
                 backgroundMaterial.SelectedItem = material[0];
@@ -52,16 +51,20 @@ namespace WSAFileLink
             }
             else
             {
+                // 非法输入，扔出警报
                 throw new Exception($"Wrong material type: {localSettings.Values["materialStatus"]}");
             }
 
-                adbPath.Text = localSettings.Values["adb"] as string;
+            adbPath.Text = localSettings.Values["adb"] as string;
         }
+
+        // 读取本地设置数据，调整TextBox内容
         public void adbPath_TextChanged(object sender, RoutedEventArgs e)
         {
             localSettings.Values["adb"] = adbPath.Text;
         }
 
+        // 背景材料设置ComboBox改动事件
         private void backgroundMaterial_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string materialStatus = e.AddedItems[0].ToString();

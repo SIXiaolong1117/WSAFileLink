@@ -42,7 +42,12 @@ namespace WSAFileLink
             adbPushCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "';";
             adbPullCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "';";
         }
-
+        private void FileFolderPath_DragOver(object sender, DragEventArgs e)
+        {
+        }
+        private void FileFolderPath_Drop(object sender, DragEventArgs e)
+        {
+        }
         public void FileFolderPath_TextChanged(object sender, TextChangedEventArgs e)
         {
             localSettings.Values["FileFolderPath"] = FileFolderPath.Text;
@@ -86,7 +91,7 @@ namespace WSAFileLink
             String adbPath = localSettings.Values["adb"] as string;
             Process process = new Process();
             process.StartInfo.FileName = "PowerShell.exe";
-            process.StartInfo.Arguments = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "'";
+            process.StartInfo.Arguments = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "';";
             //是否使用操作系统shell启动
             process.StartInfo.UseShellExecute = false;
             //是否在新窗口中启动该进程的值 (不显示程序窗口)
@@ -101,7 +106,7 @@ namespace WSAFileLink
             String adbPath = localSettings.Values["adb"] as string;
             Process process = new Process();
             process.StartInfo.FileName = "PowerShell.exe";
-            process.StartInfo.Arguments = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "'; ";
+            process.StartInfo.Arguments = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "';";
             //是否使用操作系统shell启动
             process.StartInfo.UseShellExecute = false;
             //是否在新窗口中启动该进程的值 (不显示程序窗口)

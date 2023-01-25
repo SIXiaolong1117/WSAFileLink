@@ -21,7 +21,15 @@
                     <TextBlock Text="Push Windows file to WSA" FontSize="16" HorizontalAlignment="Center"/>
                     <TextBlock Text="adb push &lt;local> &lt;remote>" FontSize="12" HorizontalAlignment="Center" Foreground="DarkGray"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBox x:Name="FileFolderPath" TextChanged="FileFolderPath_TextChanged" Header="Push:" PlaceholderText="Windows file path" MinWidth="200" MaxWidth="200"/>
+                        <TextBox x:Name="FileFolderPath" 
+                                 AllowDrop="True" 
+                                 DragOver="FileFolderPath_DragOver" 
+                                 Drop="FileFolderPath_Drop"
+                                 TextChanged="FileFolderPath_TextChanged" 
+                                 Header="Push:" 
+                                 PlaceholderText="Windows file path" 
+                                 MinWidth="200" 
+                                 MaxWidth="200"/>
                         <Button x:Name="toAndroidPickerButton" Click="toAndroidPickerButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="60" MaxWidth="60" Margin="8,0,0,0">Select</Button>
                     </StackPanel>
                     <TextBox x:Name="ToAndroidPath" TextChanged="ToAndroidPath_TextChanged" Header="To:" PlaceholderText="Android folder path" MinWidth="268" MaxWidth="268"/>

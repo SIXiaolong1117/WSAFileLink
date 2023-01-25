@@ -8,14 +8,12 @@
     xmlns:local="using:WSAFileLink"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    mc:Ignorable="d">
 
-    <Grid>
+    <Grid AllowDrop="True" DragOver="Grid_DragOver" Drop="Grid_Drop" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left" VerticalAlignment="Center">
-                <TextBlock Text="Drag files here" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-            </StackPanel>
+            <TextBlock Text="Drop files here" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock x:Name="abdCMD" Text="adb push &lt;local> &lt;remote>" FontSize="12" HorizontalAlignment="Center" Foreground="DarkGray" TextWrapping="Wrap" Margin="24, 8"/>
         </StackPanel>
     </Grid>
 </Page>
