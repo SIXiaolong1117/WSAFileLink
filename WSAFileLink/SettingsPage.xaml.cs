@@ -51,8 +51,11 @@ namespace WSAFileLink
             }
             else
             {
+                // 默认材料为Mica
+                localSettings.Values["materialStatus"] = "Mica";
+                backgroundMaterial.SelectedItem = material[0];
                 // 非法输入，扔出警报
-                throw new Exception($"Wrong material type: {localSettings.Values["materialStatus"]}");
+                //throw new Exception($"Wrong material type: {localSettings.Values["materialStatus"]}");
             }
 
             adbPath.Text = localSettings.Values["adb"] as string;
