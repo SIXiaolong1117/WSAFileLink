@@ -12,7 +12,7 @@
 
     <Grid AllowDrop="True" DragOver="Grid_DragOver" Drop="Grid_Drop" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Text="Drop files here" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" />
+            <TextBlock Text="拖放文件到这里" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" />
             <TextBlock x:Name="abdCMD" Text="adb push &lt;local> &lt;remote>" FontSize="12" HorizontalAlignment="Center" Foreground="DarkGray" TextWrapping="Wrap" Margin="24, 8"/>
         </StackPanel>
     </Grid>

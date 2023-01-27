@@ -44,7 +44,6 @@ namespace WSAFileLink
                     var storageFile = items[0] as StorageFile;
                     String adbPath = localSettings.Values["adb"] as string;
                     abdCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + storageFile.Path + "' '/storage/emulated/0/Download/';";
-                    //throw new Exception($"{storageFile}");
 
                     Process process = new Process();
                     process.StartInfo.FileName = "PowerShell.exe";

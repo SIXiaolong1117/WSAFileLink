@@ -1,4 +1,4 @@
-<!-- Copyright (c) Microsoft Corporation and Contributors. -->
+﻿<!-- Copyright (c) Microsoft Corporation and Contributors. -->
 <!-- Licensed under the MIT License. -->
 
 <Window
@@ -24,11 +24,11 @@
 
         <NavigationView x:Name="NavView" SelectionChanged="NavigationView_SelectionChanged" Grid.Row="1" IsBackButtonVisible="Collapsed" IsSettingsVisible="True">
             <NavigationView.MenuItems>
-                <NavigationViewItem Icon="Sort" Content="Drop and Upload" Tag="DragandDrop"/>
-                <NavigationViewItem Icon="Sort" Content="WSA File Push/Pull" Tag="WSAFileLink"/>
+                <NavigationViewItem Icon="Sort" Content="拖放并上传" Tag="DragandDrop"/>
+                <NavigationViewItem Icon="Sort" Content="文件 Push/Pull" Tag="WSAFileLink"/>
             </NavigationView.MenuItems>
             <NavigationView.FooterMenuItems>
-                <NavigationViewItem Icon="Message" Content="About" Tag="About"/>
+                <NavigationViewItem Icon="Message" Content="关于" Tag="About"/>
             </NavigationView.FooterMenuItems>
             <Frame x:Name="contentFrame"/>
         </NavigationView>

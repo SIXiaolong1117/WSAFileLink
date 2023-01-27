@@ -35,6 +35,7 @@ namespace WSAFileLink
         {
             this.InitializeComponent();
 
+            // 初始化两个TextBox为空
             localSettings.Values["FileFolderPath"] = "";
             localSettings.Values["ToWindowsPath"] = "";
         }
@@ -47,7 +48,8 @@ namespace WSAFileLink
             IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
             var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
             var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
-
+            
+            // 重新设定窗口大小
             appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 480, Height = 870 });
         }
 

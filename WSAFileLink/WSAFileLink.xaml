@@ -14,11 +14,9 @@
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
 
-            <TextBlock Text="File Push/Pull" FontSize="20" HorizontalAlignment="Center" Margin="0,0,0,16"/>
-
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Push Windows file to WSA" FontSize="16" HorizontalAlignment="Center"/>
+                    <TextBlock Text="推送 (Push) Windows 文件到 WSA" FontSize="16" HorizontalAlignment="Center"/>
                     <TextBlock Text="adb push &lt;local> &lt;remote>" FontSize="12" HorizontalAlignment="Center" Foreground="DarkGray"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBox x:Name="FileFolderPath" 
@@ -26,35 +24,52 @@
                                  DragOver="FileFolderPath_DragOver" 
                                  Drop="FileFolderPath_Drop"
                                  TextChanged="FileFolderPath_TextChanged" 
-                                 Header="Push:" 
-                                 PlaceholderText="Windows file path" 
-                                 MinWidth="200" 
-                                 MaxWidth="200"/>
-                        <Button x:Name="toAndroidPickerButton" Click="toAndroidPickerButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="60" MaxWidth="60" Margin="8,0,0,0">Select</Button>
+                                 Header="推送：" 
+                                 PlaceholderText="Windows 文件" 
+                                 Width="200"
+                                 Margin="0,8,0,0"/>
+                        <Button x:Name="toAndroidPickerButton" 
+                                Click="toAndroidPickerButton_Click" 
+                                HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                Width="60"
+                                Margin="8,0,0,0">选择</Button>
                     </StackPanel>
-                    <TextBox x:Name="ToAndroidPath" TextChanged="ToAndroidPath_TextChanged" Header="To:" PlaceholderText="Android folder path" MinWidth="268" MaxWidth="268"/>
+                    <TextBox x:Name="ToAndroidPath" TextChanged="ToAndroidPath_TextChanged" Header="到：" PlaceholderText="Android 目录" Width="268" Margin="0,8,0,0"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBox x:Name="adbPushCMD" Header="Push CMD:" MinWidth="200" MaxWidth="200"/>
-                        <Button x:Name="toAndroidCopyButton" Click="toAndroidCopyButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="60" MaxWidth="60" Margin="8,0,0,0">Copy</Button>
+                        <TextBox x:Name="adbPushCMD" Header="命令行：" Width="200" Margin="0,8,0,0"/>
+                        <Button x:Name="toAndroidCopyButton" Click="toAndroidCopyButton_Click" 
+                                HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                                Width="60"
+                                Margin="8,0,0,0">复制</Button>
                     </StackPanel>
-                    <Button x:Name="pushButton" Click="pushButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="80" MaxWidth="80" Margin="0,8,0,0">Push File</Button>
+                    <Button x:Name="pushButton" Click="pushButton_Click" 
+                            HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                            Width="80" 
+                            Margin="0,8,0,0">推送</Button>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Pull WSA file/folder to Windows" FontSize="16" HorizontalAlignment="Center" Margin="0,16,0,0"/>
+                    <TextBlock Text="拉取 (Pull) WSA 文件/目录到 Windows" FontSize="16" HorizontalAlignment="Center" Margin="0,16,0,0"/>
                     <TextBlock Text="adb pull &lt;remote> &lt;local>" FontSize="12" HorizontalAlignment="Center" Foreground="DarkGray"/>
-                    <TextBox x:Name="PullFolderPath" TextChanged="PullFolderPath_TextChanged" Header="Pull:"  PlaceholderText="Android file/folder path" MinWidth="268" MaxWidth="268"/>
+                    <TextBox x:Name="PullFolderPath" TextChanged="PullFolderPath_TextChanged" Header="拉取："  PlaceholderText="Android 文件/目录" Width="268" Margin="0,8,0,0"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBox x:Name="ToWindowsPath" TextChanged="ToWindowsPath_TextChanged" Header="To:" PlaceholderText="Windows folder path" MinWidth="200" MaxWidth="200"/>
-                        <Button x:Name="toWindowsPickerButton" Click="toWindowsPickerButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="60" MaxWidth="60" Margin="8,0,0,0">Select</Button>
+                        <TextBox x:Name="ToWindowsPath" TextChanged="ToWindowsPath_TextChanged" Header="到：" PlaceholderText="Windows 目录" Width="200" Margin="0,8,0,0"/>
+                        <Button x:Name="toWindowsPickerButton" Click="toWindowsPickerButton_Click" 
+                                HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="60"
+                                Margin="8,0,0,0">选择</Button>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBox x:Name="adbPullCMD" Header="Pull CMD:" MinWidth="200" MaxWidth="200"/>
-                        <Button x:Name="toWindowsCopyButton" Click="toWindowsCopyButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="60" MaxWidth="60" Margin="8,0,0,0">Copy</Button>
+                        <TextBox x:Name="adbPullCMD" Header="命令行：" MinWidth="200" MaxWidth="200" Margin="0,8,0,0"/>
+                        <Button x:Name="toWindowsCopyButton" Click="toWindowsCopyButton_Click" 
+                                HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="60"
+                                Margin="8,0,0,0">复制</Button>
                     </StackPanel>
-                    <Button x:Name="pullButton" Click="pullButton_Click" HorizontalAlignment="Center" VerticalAlignment="Bottom" MinWidth="80" MaxWidth="80" Margin="0,8,0,0">Pull File</Button>
+                    <Button x:Name="pullButton" Click="pullButton_Click" 
+                            HorizontalAlignment="Center" VerticalAlignment="Bottom" 
+                            Width="80" 
+                            Margin="0,8,0,0">拉取</Button>
                 </StackPanel>
             </StackPanel>
 
