@@ -1,4 +1,4 @@
-<!-- Copyright (c) Microsoft Corporation and Contributors. -->
+Ôªø<!-- Copyright (c) Microsoft Corporation and Contributors. -->
 <!-- Licensed under the MIT License. -->
 
 <Page
@@ -16,7 +16,7 @@
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="Õ∆ÀÕ (Push) Windows Œƒº˛µΩ WSA" FontSize="16" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Êé®ÈÄÅ (Push) Windows Êñá‰ª∂Âà∞ WSA" FontSize="16" HorizontalAlignment="Center"/>
                     <TextBlock Text="adb push &lt;local> &lt;remote>" FontSize="12" HorizontalAlignment="Center" Foreground="DarkGray"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBox x:Name="FileFolderPath" 
@@ -24,52 +24,52 @@
                                  DragOver="FileFolderPath_DragOver" 
                                  Drop="FileFolderPath_Drop"
                                  TextChanged="FileFolderPath_TextChanged" 
-                                 Header="Õ∆ÀÕ£∫" 
-                                 PlaceholderText="Windows Œƒº˛" 
+                                 Header="Êé®ÈÄÅÔºö" 
+                                 PlaceholderText="Windows Êñá‰ª∂" 
                                  Width="200"
                                  Margin="0,8,0,0"/>
                         <Button x:Name="toAndroidPickerButton" 
                                 Click="toAndroidPickerButton_Click" 
                                 HorizontalAlignment="Center" VerticalAlignment="Bottom" 
                                 Width="60"
-                                Margin="8,0,0,0">—°‘Ò</Button>
+                                Margin="8,0,0,0">ÈÄâÊã©</Button>
                     </StackPanel>
-                    <TextBox x:Name="ToAndroidPath" TextChanged="ToAndroidPath_TextChanged" Header="µΩ£∫" PlaceholderText="Android ƒø¬º" Width="268" Margin="0,8,0,0"/>
+                    <TextBox x:Name="ToAndroidPath" TextChanged="ToAndroidPath_TextChanged" Header="Âà∞Ôºö" PlaceholderText="Android ÁõÆÂΩï" Width="268" Margin="0,8,0,0"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBox x:Name="adbPushCMD" Header="√¸¡Ó––£∫" Width="200" Margin="0,8,0,0"/>
+                        <TextBox x:Name="adbPushCMD" Header="ÂëΩ‰ª§Ë°åÔºö" Width="200" Margin="0,8,0,0"/>
                         <Button x:Name="toAndroidCopyButton" Click="toAndroidCopyButton_Click" 
                                 HorizontalAlignment="Center" VerticalAlignment="Bottom" 
                                 Width="60"
-                                Margin="8,0,0,0">∏¥÷∆</Button>
+                                Margin="8,0,0,0">Â§çÂà∂</Button>
                     </StackPanel>
                     <Button x:Name="pushButton" Click="pushButton_Click" 
                             HorizontalAlignment="Center" VerticalAlignment="Bottom" 
                             Width="80" 
-                            Margin="0,8,0,0">Õ∆ÀÕ</Button>
+                            Margin="0,8,0,0">Êé®ÈÄÅ</Button>
                 </StackPanel>
             </StackPanel>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="¿≠»° (Pull) WSA Œƒº˛/ƒø¬ºµΩ Windows" FontSize="16" HorizontalAlignment="Center" Margin="0,16,0,0"/>
+                    <TextBlock Text="ÊãâÂèñ (Pull) WSA Êñá‰ª∂/ÁõÆÂΩïÂà∞ Windows" FontSize="16" HorizontalAlignment="Center" Margin="0,16,0,0"/>
                     <TextBlock Text="adb pull &lt;remote> &lt;local>" FontSize="12" HorizontalAlignment="Center" Foreground="DarkGray"/>
-                    <TextBox x:Name="PullFolderPath" TextChanged="PullFolderPath_TextChanged" Header="¿≠»°£∫"  PlaceholderText="Android Œƒº˛/ƒø¬º" Width="268" Margin="0,8,0,0"/>
+                    <TextBox x:Name="PullFolderPath" TextChanged="PullFolderPath_TextChanged" Header="ÊãâÂèñÔºö"  PlaceholderText="Android Êñá‰ª∂/ÁõÆÂΩï" Width="268" Margin="0,8,0,0"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBox x:Name="ToWindowsPath" TextChanged="ToWindowsPath_TextChanged" Header="µΩ£∫" PlaceholderText="Windows ƒø¬º" Width="200" Margin="0,8,0,0"/>
+                        <TextBox x:Name="ToWindowsPath" TextChanged="ToWindowsPath_TextChanged" Header="Âà∞Ôºö" PlaceholderText="Windows ÁõÆÂΩï" Width="200" Margin="0,8,0,0"/>
                         <Button x:Name="toWindowsPickerButton" Click="toWindowsPickerButton_Click" 
                                 HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="60"
-                                Margin="8,0,0,0">—°‘Ò</Button>
+                                Margin="8,0,0,0">ÈÄâÊã©</Button>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBox x:Name="adbPullCMD" Header="√¸¡Ó––£∫" MinWidth="200" MaxWidth="200" Margin="0,8,0,0"/>
+                        <TextBox x:Name="adbPullCMD" Header="ÂëΩ‰ª§Ë°åÔºö" MinWidth="200" MaxWidth="200" Margin="0,8,0,0"/>
                         <Button x:Name="toWindowsCopyButton" Click="toWindowsCopyButton_Click" 
                                 HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="60"
-                                Margin="8,0,0,0">∏¥÷∆</Button>
+                                Margin="8,0,0,0">Â§çÂà∂</Button>
                     </StackPanel>
                     <Button x:Name="pullButton" Click="pullButton_Click" 
                             HorizontalAlignment="Center" VerticalAlignment="Bottom" 
                             Width="80" 
-                            Margin="0,8,0,0">¿≠»°</Button>
+                            Margin="0,8,0,0">ÊãâÂèñ</Button>
                 </StackPanel>
             </StackPanel>
 

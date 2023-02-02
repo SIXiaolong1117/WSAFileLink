@@ -1,4 +1,4 @@
-<!-- Copyright (c) Microsoft Corporation and Contributors. -->
+ï»¿<!-- Copyright (c) Microsoft Corporation and Contributors. -->
 <!-- Licensed under the MIT License. -->
 
 <Page
@@ -13,11 +13,11 @@
 
     <Grid>
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBox x:Name="adbPath" TextChanged="adbPath_TextChanged" Header="ADBÂ·¾¶£º" PlaceholderText="Adb path" Width="268"/>
+            <TextBox x:Name="adbPath" TextChanged="adbPath_TextChanged" Header="ADBè·¯å¾„ï¼š" PlaceholderText="Adb path" Width="268"/>
             <ComboBox x:Name="backgroundMaterial" 
                       ItemsSource="{x:Bind material}" 
                       SelectionChanged="backgroundMaterial_SelectionChanged" 
-                      Header="±³¾°²ÄÁÏ£º" 
+                      Header="èƒŒæ™¯ææ–™ï¼š" 
                       Width="268" 
                       Margin="0,8,0,0">
             </ComboBox>
