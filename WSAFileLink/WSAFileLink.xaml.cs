@@ -21,6 +21,7 @@ using Windows.Storage;
 using WinRT.Interop;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.UI.ViewManagement;
+using System.Threading;
 
 namespace WSAFileLink
 {
@@ -31,12 +32,18 @@ namespace WSAFileLink
         private void refreshCMD()
         {
             String adbPath = localSettings.Values["adb"] as string;
-            adbPushCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "';";
-            adbPullCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "';";
+            
+            localSettings.Values["PushCMD"] = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "';";
+            adbPushCMD.Text = localSettings.Values["PushCMD"] as string;
+            localSettings.Values["PullCMD"] = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "';";
+            adbPullCMD.Text = localSettings.Values["PullCMD"] as string;
         }
         public WSAFileLink()
         {
             this.InitializeComponent();
+
+            adbPushCMD.Text = "";
+            adbPullCMD.Text = "";
 
             FileFolderPath.Text = localSettings.Values["FileFolderPath"] as string;
             ToAndroidPath.Text = localSettings.Values["ToAndroidPath"] as string;
@@ -76,48 +83,57 @@ namespace WSAFileLink
         private void toAndroidCopyButton_Click(object sender, RoutedEventArgs e)
         {
             String adbPath = localSettings.Values["adb"] as string;
-            dataPackage.SetText(adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "';");
+            dataPackage.SetText(adbPushCMD.Text);
             dataPackage.RequestedOperation = DataPackageOperation.Copy;
             Clipboard.SetContent(dataPackage);
         }
         private void toWindowsCopyButton_Click(object sender, RoutedEventArgs e)
         {
             String adbPath = localSettings.Values["adb"] as string;
-            dataPackage.SetText(adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "';");
+            dataPackage.SetText(adbPullCMD.Text);
             dataPackage.RequestedOperation = DataPackageOperation.Copy;
             Clipboard.SetContent(dataPackage);
         }
         private void pushButton_Click(object sender, RoutedEventArgs e)
         {
-            String adbPath = localSettings.Values["adb"] as string;
+            refreshCMD();
+            ThreadStart childref = new ThreadStart(pushChildThread);
+            Thread childThread = new Thread(childref);
+            childThread.Start();
+        }
+        public void pushChildThread()
+        {
             Process process = new Process();
             process.StartInfo.FileName = "PowerShell.exe";
-            process.StartInfo.Arguments = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + FileFolderPath.Text + "' '" + ToAndroidPath.Text + "';";
+            process.StartInfo.Arguments = localSettings.Values["PushCMD"] as string;
             //是否使用操作系统shell启动
             process.StartInfo.UseShellExecute = false;
             //是否在新窗口中启动该进程的值 (不显示程序窗口)
             process.StartInfo.CreateNoWindow = true;
             process.Start();
-            //等待程序执行完退出进程
             process.WaitForExit();
             process.Close();
         }
         private void pullButton_Click(object sender, RoutedEventArgs e)
         {
-            String adbPath = localSettings.Values["adb"] as string;
+            refreshCMD();
+            ThreadStart childref = new ThreadStart(pullChildThread);
+            Thread childThread = new Thread(childref);
+            childThread.Start();
+        }
+        public void pullChildThread()
+        {
             Process process = new Process();
             process.StartInfo.FileName = "PowerShell.exe";
-            process.StartInfo.Arguments = adbPath + " connect 127.0.0.1:58526; " + adbPath + " pull '" + PullFolderPath.Text + "' '" + ToWindowsPath.Text + "';";
+            process.StartInfo.Arguments = localSettings.Values["PullCMD"] as string;
             //是否使用操作系统shell启动
             process.StartInfo.UseShellExecute = false;
             //是否在新窗口中启动该进程的值 (不显示程序窗口)
-            process.StartInfo.CreateNoWindow = false;
+            process.StartInfo.CreateNoWindow = true;
             process.Start();
-            //等待程序执行完退出进程
             process.WaitForExit();
             process.Close();
         }
-
         private async void toAndroidPickerButton_Click(object sender, RoutedEventArgs e)
         {
             // 创建一个FilePicker

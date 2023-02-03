@@ -15,6 +15,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -43,21 +44,27 @@ namespace WSAFileLink
                 {
                     var storageFile = items[0] as StorageFile;
                     String adbPath = localSettings.Values["adb"] as string;
-                    abdCMD.Text = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + storageFile.Path + "' '/storage/emulated/0/Download/';";
-
-                    Process process = new Process();
-                    process.StartInfo.FileName = "PowerShell.exe";
-                    process.StartInfo.Arguments = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + storageFile.Path + "' '/storage/emulated/0/Download/';";
-                    //是否使用操作系统shell启动
-                    process.StartInfo.UseShellExecute = false;
-                    //是否在新窗口中启动该进程的值 (不显示程序窗口)
-                    process.StartInfo.CreateNoWindow = true;
-                    process.Start();
-                    //等待程序执行完退出进程
-                    process.WaitForExit();
-                    process.Close();
+                    localSettings.Values["adbCMDs"] = adbPath + " connect 127.0.0.1:58526; " + adbPath + " push '" + storageFile.Path + "' '/storage/emulated/0/Download/';";
+                    abdCMD.Text = localSettings.Values["adbCMDs"] as string;
+                    ThreadStart childref = new ThreadStart(CallToChildThread);
+                    Thread childThread = new Thread(childref);
+                    childThread.Start();
                 }
             }
+        }
+        public void CallToChildThread()
+        {
+            Process process = new Process();
+            process.StartInfo.FileName = "PowerShell.exe";
+            process.StartInfo.Arguments = localSettings.Values["adbCMDs"] as string;
+            //是否使用操作系统shell启动
+            process.StartInfo.UseShellExecute = false;
+            //是否在新窗口中启动该进程的值 (不显示程序窗口)
+            process.StartInfo.CreateNoWindow = true;
+            process.Start();
+            //等待程序执行完退出进程
+            process.WaitForExit();
+            process.Close();
         }
     }
 }
