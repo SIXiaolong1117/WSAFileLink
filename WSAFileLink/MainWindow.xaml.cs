@@ -12,6 +12,7 @@ using Microsoft.UI.Xaml.Media.Animation;
 using System.Security.AccessControl;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using System.Linq;
+using Windows.UI.ViewManagement;
 
 namespace WSAFileLink
 {
@@ -24,7 +25,6 @@ namespace WSAFileLink
 
         ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
 
-        //String materialStatus = localSettings.Values["materialStatus"] as string;
         public MainWindow()
         {
             this.InitializeComponent();

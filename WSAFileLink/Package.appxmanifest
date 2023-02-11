@@ -9,7 +9,7 @@
   <Identity
     Name="e58c4895-927c-411a-9088-a07f1fb727b2"
     Publisher="CN=SI Xiaolong"
-    Version="1.0.4.0" />
+    Version="1.0.5.0" />
 
   <Properties>
     <DisplayName>WSAFileLink</DisplayName>

@@ -12,7 +12,7 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <Grid>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
@@ -49,9 +49,9 @@
                 </StackPanel>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="16,0,0,0">
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-                    <TextBlock Text="拉取 (Pull) WSA 文件/目录到 Windows" FontSize="16" HorizontalAlignment="Center" Margin="0,16,0,0"/>
+                    <TextBlock Text="拉取 (Pull) WSA 文件/目录到 Windows" FontSize="16" HorizontalAlignment="Center"/>
                     <TextBlock Text="adb pull &lt;remote> &lt;local>" FontSize="12" HorizontalAlignment="Center" Foreground="DarkGray"/>
                     <TextBox x:Name="PullFolderPath" TextChanged="PullFolderPath_TextChanged" Header="拉取："  PlaceholderText="Android 文件/目录" Width="268" Margin="0,8,0,0"/>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">

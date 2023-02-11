@@ -48,9 +48,9 @@ namespace WSAFileLink
             IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
             var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
             var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
-            
+
             // 重新设定窗口大小
-            appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 480, Height = 870 });
+            appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 900, Height = 600 });
         }
 
         public static Window m_window;
