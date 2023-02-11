@@ -4,7 +4,9 @@
 
 ## 项目预览
 
-<img src="./README/屏幕截图 2023-02-02 202154.png" style="zoom: 80%;" />
+<img src="./README/屏幕截图 2023-02-12 024855.png" style="zoom: 80%;" />
+
+<img src="./README/屏幕截图 2023-02-12 024903.png" style="zoom: 80%;" />
 
 ## ⬇下载
 
