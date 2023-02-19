@@ -46,11 +46,25 @@ namespace WSAFileLink
             m_window.Activate();
 
             IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(m_window);
-            var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
-            var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
+            //var windowId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
+            //var appWindow = Microsoft.UI.Windowing.AppWindow.GetFromWindowId(windowId);
 
-            // 重新设定窗口大小
-            appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 900, Height = 600 });
+            //// 重新设定窗口大小
+            //appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 900, Height = 600 });
+
+            SetWindowSize(hWnd, 900, 600);
+        }
+
+        private void SetWindowSize(IntPtr hwnd, int width, int height)
+        {
+            var dpi = PInvoke.User32.GetDpiForWindow(hwnd);
+            float scalingFactor = (float)dpi / 96;
+            width = (int)(width * scalingFactor);
+            height = (int)(height * scalingFactor);
+
+            PInvoke.User32.SetWindowPos(hwnd, PInvoke.User32.SpecialWindowHandles.HWND_TOP,
+                                        0, 0, width, height,
+                                        PInvoke.User32.SetWindowPosFlags.SWP_NOMOVE);
         }
 
         public static Window m_window;

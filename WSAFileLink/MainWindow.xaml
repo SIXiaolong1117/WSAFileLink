@@ -28,9 +28,7 @@
             <NavigationView.FooterMenuItems>
                 <NavigationViewItem Icon="Message" Content="关于" Tag="About"/>
             </NavigationView.FooterMenuItems>
-            <Viewbox>
-                <Frame x:Name="contentFrame" Width="600" Height="400"/>
-            </Viewbox>
+            <Frame x:Name="contentFrame" Width="600" Height="400"/>
         </NavigationView>
     </Grid>
 </Window>
