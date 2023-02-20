@@ -52,7 +52,7 @@ namespace WSAFileLink
             //// 重新设定窗口大小
             //appWindow.Resize(new Windows.Graphics.SizeInt32 { Width = 900, Height = 600 });
 
-            SetWindowSize(hWnd, 900, 600);
+            SetWindowSize(hWnd, 720, 480);
         }
 
         private void SetWindowSize(IntPtr hwnd, int width, int height)

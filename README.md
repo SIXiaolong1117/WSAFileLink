@@ -1,12 +1,26 @@
-# WSA File Link
-
-个人的一个 C# + WinUI3 的练手项目，可以实现便捷的将文件传输到 WSA。
+<p align="center">
+  <h1 align="center">WSA File Link</h1>
+  <p align="center">个人的一个 C# + WinUI3 的练手项目，可以实现便捷的将文件传输到 WSA。</p>
+  <p align="center">
+    <a href="https://github.com/Direct5dom/WSAFileLink/blob/master/LICENSE">
+      <img src="https://img.shields.io/github/license/Direct5dom/WSAFileLink"/>
+    </a>
+    <a href="https://github.com/Direct5dom/WSAFileLink/releases">
+      <img src="https://img.shields.io/github/v/release/Direct5dom/WSAFileLink?display_name=tag"/>
+    </a>
+  </p>
+  <p align="center">
+    <a href="https://twitter.com/SI_Xiaolong">
+      <img src="https://img.shields.io/badge/follow-SI_Xiaolong-blue?style=flat&logo=Twitter"/>
+    </a>
+  </p>
+</p>
 
 ## 项目预览
 
-<img src="./README/屏幕截图 2023-02-12 024855.png" style="zoom: 80%;" />
+<img src="./README/屏幕截图 2023-02-12 024855.png" width="50%"/>
 
-<img src="./README/屏幕截图 2023-02-12 024903.png" style="zoom: 80%;" />
+<img src="./README/屏幕截图 2023-02-12 024903.png" width="50%"/>
 
 ## ⬇下载
 
@@ -44,8 +58,4 @@ git clone https://github.com/Direct5dom/WSAFileLink.git
 
 或者更方便的，使用 Visual Studio 的“克隆存储库”克隆本仓库。
 
-使用 Visual Studio 打开项目根目录的`WSAFileLink.sln`，即可进行调试和打包。
-
-## ⚖️License
-
-[MIT License](https://github.com/Direct5dom/WSAFileLink/blob/master/LICENSE)
+使用 Visual Studio 打开项目根目录的 `WSAFileLink.sln`，即可进行调试和打包。
