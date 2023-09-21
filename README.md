@@ -1,3 +1,7 @@
+因为微软已经在WSA对文件互通提供了官方解决方案，本项目失去意义，停止更新。
+
+---
+
 <p align="center">
   <h1 align="center">WSA File Link</h1>
   <p align="center">个人的一个 C# + WinUI3 的练手项目，可以实现便捷的将文件传输到 WSA。</p>
